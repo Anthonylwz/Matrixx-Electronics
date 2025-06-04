@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matrixx Electronics</title>
+  <meta
+    name="description"
+    content="Matrix: Tu tienda de tecnología en Perú. Encuentra Laptops, Computadoras, Celulares, Cámaras de seguridad, accesorios, servicios técnicos y más."
+  />
+  <link rel="stylesheet" href="styles.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+  />
+</head>
+<body>
+  <div id="global-loader">
+    <div class="loader-spinner"></div>
+  </div>
+  <div id="notification-container"></div>
+
+  <a
+    href="https://wa.me/51912345678?text=Hola%2C%20necesito%20ayuda%20con%20un%20producto." target="_blank"
+    class="floating-btn whatsapp-btn"
+    id="whatsapp-btn-1"
+    aria-label="Contactar por WhatsApp Principal"
+    
+  >
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  <a
+    href="https://wa.me/51987654321?text=Hola%2C%20quisiera%20consultar%20sobre%20soporte." target="_blank"
+    class="floating-btn whatsapp-btn"
+    id="whatsapp-btn-2"
+    aria-label="Contactar por WhatsApp para Soporte"
+  >
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  <a
+    href="https://wa.me/51999999999?text=Hola%2C%20tengo%20una%20pregunta%20sobre%20ventas." target="_blank"
+    class="floating-btn whatsapp-btn"
+    id="whatsapp-btn-3"
+    aria-label="Contactar por WhatsApp para Ventas"
+  >
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+
+  <header class="main-header">
+    <a href="index.html" class="logo">
+      <img
+        src="imagenes/logo.png" 
+        alt="Matrixx Electronics Logo"
+        style="height: 40px; margin-right: 10px; vertical-align: middle;"
+      />
+      <span style="vertical-align: middle;">Matrixx Electronics</span>
+    </a>
+    
+    <div class="search-wrapper">
+        <form class="search-container" role="search" id="searchForm" autocomplete="off">
+            <label for="searchCategoryHeader" class="visually-hidden">Categoría</label>
+            <select id="searchCategoryHeader" name="categoria">
+                <option value="all">Todas</option>
+                <option value="laptops">Laptops</option>
+                <option value="computadoras">Computadoras</option>
+                <option value="celulares">Celulares</option>
+                <option value="camaras">Cámaras</option>
+                <option value="accesorios">Accesorios</option>
+                <option value="gamer">Gamer</option>
+                <option value="servicios">Servicios</option>
+            </select>
+            <label for="searchInputHeader" class="visually-hidden">Buscar</label>
+            <input
+                type="search"
+                id="searchInputHeader"
+                name="q"
+                placeholder="Buscar productos, marcas y más..."
+            />
+            <button type="submit" class="search-btn" aria-label="Buscar"><i class="fas fa-search"></i></button>
+        </form>
+        <div id="search-suggestions" class="search-suggestions-container"></div>
+    </div>
+
+    <div class="header-actions">
+      <div class="cart-icon-wrapper">
+        <button
+          class="action-btn cart-btn"
+          id="cart-icon-btn"
+          aria-label="Carrito de compras"
+          aria-haspopup="true"
+          aria-expanded="false"
+          aria-controls="cartDropdown"
+        >
+          <i class="fas fa-shopping-cart"></i><span class="cart-count">0</span>
+        </button>
+        <div class="cart-dropdown" id="cartDropdown" aria-labelledby="cart-heading">
+          <h3 id="cart-heading" class="cart-header">
+            Mi Carrito (<span class="cart-count">0</span>)
+          </h3>
+          <div class="cart-items" id="cartItemsContainer">
+            <p class="empty-cart-message">Tu carrito está vacío.</p>
+          </div>
+          <div class="cart-footer">
+            <div class="cart-total">
+              <span>Total:</span> <span id="cartTotal">S/0.00</span>
+            </div>
+            <button class="checkout-btn" id="checkoutBtn" disabled>
+              PROCEDER AL PAGO
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="main-nav" aria-label="Categorías principales">
+    <div class="container">
+      <ul class="main-menu" role="menubar">
+        <li role="none"><a role="menuitem" href="index.html">Inicio</a></li>
+        <li role="none" class="has-submenu">
+          <a
+            role="menuitem"
+            href="/productos"
+            aria-haspopup="true"
+            aria-expanded="false"
+            >Productos</a
+          >
+          <ul class="submenu" role="menu">
+            <li role="none"><a role="menuitem" href="laptop.html">Laptop</a></li>
+            <li role="none"><a role="menuitem" href="computadoras.html">Computadora</a></li>
+            <li role="none"><a role="menuitem" href="cam.html">Celular</a></li>
+            <li role="none">
+              <a role="menuitem" href="cam.html">Cámaras de Seguridad</a>
+            </li>
+            <li role="none"><a role="menuitem" href="accesorios.html">Accesorios</a></li>
+            <li role="none"><a role="menuitem" href="/productos?categoria=gamer">Gamer</a></li>
+          </ul>
+        </li>
+        <li role="none" class="has-submenu">
+          <a
+            role="menuitem"
+            href="/servicios"
+            aria-haspopup="true"
+            aria-expanded="false"
+            >Servicios</a
+          >
+          <ul class="submenu" role="menu">
+            <li role="none">
+              <a role="menuitem" href="/servicios?tipo=tecnico">Servicio Técnico</a>
+            </li>
+            <li role="none">
+              <a role="menuitem" href="/servicios?tipo=instalacion-camaras"
+                >Instalación de Cámaras</a
+              >
+            </li>
+            <li role="none">
+              <a role="menuitem" href="/servicios?tipo=instalacion-redes"
+                >Instalación de Redes</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li role="none"><a role="menuitem" href="#ofertas">Ofertas</a></li>
+        <li role="none"><a role="menuitem" href="contacto.html">Contacto</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <section
+      class="promo-carousel"
+      id="promo-carousel"
+      aria-roledescription="Carrusel"
+      aria-label="Promociones"
+    >
+      <div class="promo-carousel-inner">
+        <div class="promo-carousel-slide">
+          <img src="imagenes/hp promo.webp" alt="Oferta en Laptops Core i7" />
+        </div>
+        <div class="promo-carousel-slide">
+          <img src="imagenes/camra4kpromo.jpg" alt="Promoción Cámaras IP 4K" />
+        </div>
+        <div class="promo-carousel-slide">
+          <img src="imagenes/promo de l4260.jpg" alt="Nuevos Celulares Gama Alta" />
+        </div>
+        <div class="promo-carousel-slide">
+          <img src="imagenes/promorgb.webp" alt="Accesorios Gamer con RGB" />
+        </div>
+      </div>
+      <button class="carousel-control carousel-prev" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
+      <button class="carousel-control carousel-next" aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>
+      <div class="carousel-dots" id="promo-carousel-dots" role="tablist"></div>
+    </section>
+
+    <section class="category-nav-section container">
+      <h2 class="visually-hidden">Navegación Rápida por Categorías</h2>
+      <div class="category-nav" id="category-nav-buttons">
+        <button data-category="all" class="active">Todas</button>
+        <button data-category="laptop">Laptops</button>
+        <button data-category="computadora">Computadoras</button>
+        <button data-category="celular">Celulares</button>
+        <button data-category="camaras">Cámaras</button>
+        <button data-category="accesorios">Accesorios</button>
+        <button data-category="gamer">Gamer</button>
+        <button data-category="servicios">Servicios</button>
+      </div>
+    </section>
+
+    <section class="product-filter-sort-bar container">
+      <div class="filter-count-message" id="filter-count-message">Mostrando 0 productos</div>
+      <div class="sort-controls">
+        <label for="sortOptions">Ordenar por:</label>
+        <select id="sortOptions">
+          <option value="default">Predeterminado</option>
+          <option value="price-asc">Precio (menor a mayor)</option>
+          <option value="price-desc">Precio (mayor a menor)</option>
+          <option value="name-asc">Nombre (A–Z)</option>
+          <option value="name-desc">Nombre (Z–A)</option>
+          <option value="rating-desc">Mejor Calificados</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="product-section" aria-labelledby="accesorios-heading">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title" id="accesorios-heading">Accesorios</h2>
+          <a href="#" class="view-all"
+            >Ver todo <i class="fas fa-arrow-right" aria-hidden="true"></i
+          ></a>
+        </div>
+        <div class="product-slider">
+          <div class="slider-container">
+            <div class="slider-track" id="accesoriosSlider">
+              </div>
+          </div>
+          <div class="slider-nav">
+            <button
+              class="slider-prev"
+              id="accesoriosPrev"
+              aria-label="Anterior"
+            >
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <button
+              class="slider-next"
+              id="accesoriosNext"
+              aria-label="Siguiente"
+            >
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="product-section"
+      id="ofertas"
+      aria-labelledby="ofertas-heading"
+    >
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title" id="ofertas-heading">Ofertas Especiales</h2>
+          <a href="#" class="view-all"
+            >Ver todo <i class="fas fa-arrow-right" aria-hidden="true"></i
+          ></a>
+        </div>
+        <div class="product-slider">
+          <div class="slider-container">
+            <div class="slider-track" id="ofertasSlider">
+              </div>
+          </div>
+          <div class="slider-nav">
+            <button
+              class="slider-prev"
+              id="ofertasPrev"
+              aria-label="Anterior"
+            >
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <button
+              class="slider-next"
+              id="ofertasNext"
+              aria-label="Siguiente"
+            >
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="brands-section">
+      <div class="container">
+        <h2 class="section-title">Trabajamos con las Mejores Marcas</h2>
+        <div class="brand-logos">
+          <div class="brand-logo-item">
+            <img src="imagenes/hp logo.svg" alt="HP Logo" />
+          </div>
+          <div class="brand-logo-item">
+            <img src="imagenes/asus logo.jpg" alt="Asus Logo" />
+          </div>
+          <div class="brand-logo-item">
+            <img src="imagenes/intel logo.png" alt="Intel Logo" />
+          </div>
+          <div class="brand-logo-item">
+            <img src="imagenes/amd logo.png" alt="AMD Logo" />
+          </div>
+          <div class="brand-logo-item">
+            <img src="imagenes/hikvision logo.png" alt="Hikvision Logo" />
+          </div>
+          <div class="brand-logo-item">
+            <img src="imagenes/kingston 480.jpg" alt="Kingston Logo" />
+          </div>
+          <div class="brand-logo-item">
+            <img src="imagenes/Logitech_logo.png" alt="Logitech Logo" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="servicios" class="services-section">
+      <div class="container">
+        <h2 class="section-title">Nuestros Servicios Adicionales</h2>
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon"><i class="fas fa-tools"></i></div> 
+            <h3 class="service-title">Ensamblaje de PCs</h3>
+            <p class="service-desc">
+              Armamos la PC de tus sueños con los componentes que elijas.
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon"><i class="fas fa-database"></i></div> 
+            <h3 class="service-title">Recuperación de Datos</h3>
+            <p class="service-desc">
+              Intentamos recuperar información valiosa de discos dañados.
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon"><i class="fas fa-network-wired"></i></div> 
+            <h3 class="service-title">Instalación de Redes</h3>
+            <p class="service-desc">
+              Configuramos redes cableadas y WiFi para hogar y oficina.
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon"><i class="fas fa-headset"></i></div> 
+            <h3 class="service-title">Asesoría Personalizada</h3>
+            <p class="service-desc">
+              Te ayudamos a encontrar la tecnología perfecta para ti.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="productModalOverlay" class="modal-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-content"> 
+        <button class="modal-close-btn" aria-label="Cerrar modal"><i class="fas fa-times"></i></button>
+        <div class="modal-left">
+          <div class="modal-main-img-container">
+            <img id="modalMainImg" src="" alt="Imagen principal del producto" /> 
+          </div>
+          <div id="modalThumbnails" class="modal-thumbnails"></div>
+        </div>
+        <div class="modal-right">
+          <h2 id="modalTitle" class="modal-title">Nombre del Producto</h2>
+          
+          <div class="modal-meta-info">
+            <div class="modal-rating" id="modalRating">
+              </div>
+            <div class="modal-stock" id="modalStockStatus">
+              </div>
+          </div>
+
+          <div class="modal-price-container">
+            <span id="modalPrice" class="modal-price">S/0.00</span>
+            <span id="modalOldPrice" class="modal-old-price hidden">S/0.00</span> 
+          </div>
+          <p id="modalDescription" class="modal-description">Descripción detallada del producto...</p>
+          
+          <div class="modal-specs-container"> 
+            <h3>Especificaciones Técnicas:</h3>
+            <div id="modalSpecs" class="modal-specs-list">
+                </div> 
+          </div>
+          
+          <div class="modal-actions"> 
+            <div class="quantity-control">
+              <label for="modalQuantityInput" class="quantity-label visually-hidden">Cantidad:</label>
+              <button class="quantity-btn decrease-qty-btn" aria-label="Disminuir cantidad"><i class="fas fa-minus"></i></button>
+              <input
+                id="modalQuantityInput"
+                type="text" 
+                inputmode="numeric"
+                value="1"
+                min="1" 
+                readonly
+                class="quantity-input"
+                aria-label="Cantidad de producto"
+              />
+              <button class="quantity-btn increase-qty-btn" aria-label="Aumentar cantidad"><i class="fas fa-plus"></i></button>
+            </div>
+            <button id="modalAddToCartBtn" class="modal-action-btn modal-add-to-cart-btn">
+              <i class="fas fa-cart-plus"></i> AÑADIR AL CARRITO
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>Institucional</h3>
+          <ul class="footer-menu">
+            <li><a href="/nosotros">Sobre Nosotros</a></li>
+            <li><a href="/tiendas">Nuestras Tiendas</a></li>
+            <li><a href="/trabaja-con-nosotros">Trabaja con Nosotros</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Atención al Cliente</h3>
+          <ul class="footer-menu">
+            <li><a href="/contacto">Contacto</a></li>
+            <li><a href="/preguntas-frecuentes">Preguntas Frecuentes (FAQ)</a></li>
+            <li><a href="/como-comprar">Cómo Comprar</a></li>
+            <li><a href="/envios">Envíos y Entregas</a></li>
+            <li><a href="/garantias">Garantías y Devoluciones</a></li>
+          </ul>
+        </div>
+        </div>
+        <div class="footer-column">
+          <h3>Contacto</h3>
+          <address>
+            Av. Garcilaso de la Vega 1348,<br />
+            Tienda 1A-123, CyberPlaza,<br />
+            Lima, Lima 15001, Perú<br />
+            Tel: +51 1 456 7890<br />
+            Email: ventas@matrix.com.pe
+          </address>
+          <div class="social-icons"> 
+            <a href="https://www.facebook.com/TuPaginaDeFacebook" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/TuUsuarioDeInstagram" target="_blank"aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/51912345678?text=Hola%2C%20desde%20la%20web." target="_blank" aria-label="Whatsapp"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 Matrixx Electronics. Todos los derechos reservados.
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
